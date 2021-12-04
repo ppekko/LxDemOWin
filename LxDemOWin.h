@@ -9,7 +9,7 @@
 //  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 //  copies of the Software, and to permit persons to whom the Software is
 //  furnished to do so, subject to the following conditions:
-//  
+//
 //  The above copyright notice and this permission notice shall be included in all
 //  copies or substantial portions of the Software.
 //
@@ -33,7 +33,7 @@
 //
 //
 //               A lot of this code is botched together from various bits of example code and stuff online, so don't expect quailty
-//               
+//
 //               Basically, if you see something you don't like in the code, boo-hoo. I'm lazy.
 //
 //
@@ -54,7 +54,9 @@
 
 #include <GL/glx.h>
 
-#include <stdbool.h>
+#define false 0
+#define true 1
+#define bool uint_fast8_t
 
 #include <pthread.h>
 
@@ -109,9 +111,9 @@ static LXDOW_Shader LXDOW_OPENGL_loadShader(const char* vertexD, const char* fra
 
     vertex = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertex, 1, &vertexD, NULL);
-    
+
     glCompileShader(vertex);
-    
+
 
     fragment = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragment, 1, &fragmentD, NULL);
@@ -169,14 +171,11 @@ static bool LXDOW_OPENGL_isExtensionSupported(const char *extList, const char *e
   const char *start;
   const char *where, *terminator;
 
-  /* Extension names should not have spaces. */
   where = strchr(extension, ' ');
   if (where || *extension == '\0')
     return false;
 
-  /* It takes a bit of care to be fool-proof about parsing the
-     OpenGL extensions string. Don't be fooled by sub-strings,
-     etc. */
+
   for (start = extList;;)
   {
     where = strstr(start, extension);
@@ -201,10 +200,6 @@ static LXDOW_Display LXDOW_createDisplay()
   LXDOW_Display display;
   display.display = XOpenDisplay(NULL);
 
-  if (!display.display)
-  {
-    // printf("Failed to open X display\n");
-  }
 
   static int visual_attribs[] =
       {
@@ -223,42 +218,26 @@ static LXDOW_Display LXDOW_createDisplay()
           // GLX_SAMPLES         , 4,
           None};
 
-  int glx_major, glx_minor;
+  uint_fast8_t glx_major, glx_minor;
 
 
-  if (!glXQueryVersion(display.display, &glx_major, &glx_minor) ||
-      ((glx_major == 1) && (glx_minor < 3)) || (glx_major < 1))
-  {
-    // printf("Invalid GLX version");
-    //
-  }
 
 
-  int fbcount;
+
+  uint_fast8_t fbcount;
   display.fbc = glXChooseFBConfig(display.display, DefaultScreen(display.display), visual_attribs, &fbcount);
-  if (!display.fbc)
-  {
-    // printf( "Failed to retrieve a framebuffer config\n" );
-    //
-  }
-  // printf( "Found %d matching FB configs.\n", fbcount );
 
-  // printf( "Getting XVisualInfos\n" );
   int best_fbc = -1, worst_fbc = -1, best_num_samp = -1, worst_num_samp = 999;
 
-  int i;
+  uint_fast8_t i;
   for (i = 0; i < fbcount; ++i)
   {
     XVisualInfo *vi = glXGetVisualFromFBConfig(display.display, display.fbc[i]);
     if (vi)
     {
-      int samp_buf, samples;
+      uint_fast16_t samp_buf, samples;
       glXGetFBConfigAttrib(display.display, display.fbc[i], GLX_SAMPLE_BUFFERS, &samp_buf);
       glXGetFBConfigAttrib(display.display, display.fbc[i], GLX_SAMPLES, &samples);
-
-      // printf( "  Matching fbconfig %d, visual ID 0x%2x: SAMPLE_BUFFERS = %d,"
-      //         " SAMPLES = %d\n",
-      //         i, vi -> visualid, samp_buf, samples );
 
       if (best_fbc < 0 || samp_buf && samples > best_num_samp)
         best_fbc = i, best_num_samp = samples;
@@ -275,42 +254,33 @@ static LXDOW_Display LXDOW_createDisplay()
 
 
   display.vi = glXGetVisualFromFBConfig(display.display, display.bestFbc);
-  // printf( "Chosen visual ID = 0x%x\n", display.vi->visualid );
 
-  // printf( "Creating colormap\n" );
   display.swa.colormap = display.cmap = XCreateColormap(display.display,
                                                         RootWindow(display.display, display.vi->screen),
                                                         display.vi->visual, AllocNone);
   display.swa.background_pixmap = None;
   display.swa.border_pixel = 0;
   display.swa.event_mask = StructureNotifyMask;
-  // printf("Display Created!");
   return display;
 }
 
 static LXDOW_Window LXDOW_createWindow(LXDOW_Display display, char *name, int width, int height)
 {
   LXDOW_Window window;
-  // printf( "Creating window\n" );
   window.win = XCreateWindow(display.display, RootWindow(display.display, display.vi->screen),
                              0, 0, width, height, 0, display.vi->depth, InputOutput,
                              display.vi->visual,
                              CWBorderPixel | CWColormap | CWEventMask, &display.swa);
-  if (!window.win)
-  {
-    // printf( "Failed to create window.\n" );
-    //
-  }
 
 
   // XFree( vi );
 
   XStoreName(display.display, window.win, name);
 
-  // printf( "Mapping window\n" );
+
   XMapWindow(display.display, window.win);
   XSync(display.display, False);
-  // printf("Window Created!");
+
   window.wmDeleteMessage = XInternAtom(display.display, "WM_DELETE_WINDOW", False);
   XSetWMProtocols(display.display, window.win, &window.wmDeleteMessage, 1);
   return window;
@@ -335,8 +305,6 @@ static void LXDOW_OPENGL_initContext(LXDOW_Display *display, LXDOW_Window *windo
   const char *glxExts = glXQueryExtensionsString(display->display,
                                                  DefaultScreen(display->display));
 
-  // NOTE: It is not necessary to create or make current to a context before
-  // calling glXGetProcAddressARB
   glXCreateContextAttribsARBProc glXCreateContextAttribsARB = 0;
   glXCreateContextAttribsARB = (glXCreateContextAttribsARBProc)
       glXGetProcAddressARB((const GLubyte *)"glXCreateContextAttribsARB");
@@ -347,8 +315,6 @@ static void LXDOW_OPENGL_initContext(LXDOW_Display *display, LXDOW_Window *windo
   int (*oldHandler)(Display *, XErrorEvent *) =
       XSetErrorHandler(&ctxErrorHandler);
 
-  // Check for the GLX_ARB_create_context extension string and the function->
-  // If either is not present, use GLX 1->3 context creation method->
 
   int context_attribs[] =
       {
@@ -357,15 +323,14 @@ static void LXDOW_OPENGL_initContext(LXDOW_Display *display, LXDOW_Window *windo
           // GLX_CONTEXT_FLAGS_ARB        , GLX_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB,
           None};
 
-  // printf( "Creating context\n" );
   window->ctx = glXCreateContextAttribsARB(display->display, display->bestFbc, 0,
                                            True, context_attribs);
 
-  // Sync to ensure any errors generated are processed->
+
   XSync(display->display, False);
   if (!ctxErrorOccurred && window->ctx)
   {
-    // printf( "Created GL 3->0 context\n" );
+    // Created GL 3->0 context
   }
   else
   {
@@ -380,35 +345,21 @@ static void LXDOW_OPENGL_initContext(LXDOW_Display *display, LXDOW_Window *windo
 
     ctxErrorOccurred = 0;
 
-    // printf( "Failed to create GL 3->0 context"
-    //         " ->->-> using old-style GLX context\n" );
+
     window->ctx = glXCreateContextAttribsARB(display->display, display->bestFbc, 0,
                                              True, context_attribs);
   }
   glXMakeCurrent(display->display, window->win, window->ctx);
 
-  // Sync to ensure any errors generated are processed->
+
   XSync(display->display, False);
 
-  // Restore the original error handler
   XSetErrorHandler(oldHandler);
 
-  if (ctxErrorOccurred || !window->ctx)
-  {
-    // printf( "Failed to create an OpenGL context\n" );
-    //
-  }
 
-  /*
-  // Verifying that context is a direct context
-  if ( ! glXIsDirect ( display->display, window->ctx ) )
-  {
-    //printf( "Indirect GLX rendering context obtained\n" );
-  }
-  else
-  {
-    //printf( "Direct GLX rendering context obtained\n" );
-  }*/
+
+
+
   glXMakeCurrent(display->display, window->win, window->ctx);
 }
 
