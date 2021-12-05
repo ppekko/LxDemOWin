@@ -38,7 +38,7 @@ lazy + i want things centered
 i made this in 2 hours and i dont plan examining 2 lines for 10 hours to make one improvment. this was made so that i could quickly hop onto making another project. I will occasionally update this with new features here and there.
 
 ### Why cant you use -nostartlibs, ect?
-it compiles but when i run it i get segfaults. i literally have no idea why this happens, and a workaround would be much appreciated (would compile to **3.4kb!**)
+it compiles but when i run it i get segfaults. i literally have no idea why this happens, and a workaround would be much appreciated (would compile to **2.2kb!**)
 
 ### Why another window manager? We already have GLFW/SDL ect.
 not small enough (see [SmallGlitter's](https://github.com/PipeWarp/Small-Glitter) size for reference)
