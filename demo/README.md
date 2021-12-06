@@ -10,4 +10,4 @@ You require:
 
 # What's BetterGZ?
 
-It's a modified version of gzexe which cuts alot of bloat out of the generated file. While this may cause it to not work properly on some systems, the size reduction is slightly imporved compared to regular gzexe. Feel free to use it in your projects if you wish.
+It's a modified version of gzexe which cuts alot of bloat out of the generated file. While this may cause it to not work properly on some systems, the size reduction is slightly improved compared to regular gzexe. Feel free to use it in your projects if you wish.
