@@ -1,5 +1,5 @@
 # Info
-The following project produces a 2.2kb application which loads up OpenGL and initialises a window. 
+The following project produces a 2.2kb (2239 bytes built on Arch Linux) application which loads up OpenGL and initialises a window. 
 
 # Building
 You require:

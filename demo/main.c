@@ -5,7 +5,7 @@
 
 void _start()
 {
-  asm volatile("sub $8, %rsp\n");
+  asm volatile("push %rax\n");
   LXDOW_Display display = LXDOW_createDisplay();
   LXDOW_Window window = LXDOW_createWindow(display, NULL, WinWidth, WinHeight);
 

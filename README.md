@@ -6,7 +6,7 @@
 ### **Linux Demo OpenGL** *and* **Window** *manager*
 
 
-A small header-Only Window and OpenGL manager made in C, written in about 2 hours. With some basic code (plain window with OpenGL loaded) and compression, it compiles to ~2.2kb. Ideal for demoscene use.
+A small header-Only Window and OpenGL manager made in C, written in about 2 hours. With some basic code (plain window with OpenGL loaded) and compression, it compiles to ~2.2kb (2239 bytes built on Arch Linux). Ideal for demoscene use.
 
 It also comes with some nifty features, like timers and shader managment for OpenGL.
 
