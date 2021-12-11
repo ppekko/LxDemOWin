@@ -15,7 +15,7 @@ all: $(OBJS)
 
 
 main.o: main.c
-	$(CC) $(FLAGS) main.c -lcuni
+	$(CC) -g -c $(FLAGS) main.c -lcuni
 
 
 clean:
