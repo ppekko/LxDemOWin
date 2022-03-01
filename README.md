@@ -38,5 +38,5 @@ i made this in 2 hours and i dont plan examining 2 lines for 10 hours to make on
 
 ### Why another window manager? We already have GLFW/SDL ect.
 ~~not small enough (see [SmallGlitter's](https://github.com/PipeWarp/Small-Glitter) size for reference)~~
-this is around one hundred bytes smaller than SDL
+**this is around one hundred bytes smaller than SDL**
 
