@@ -32,10 +32,6 @@
 //               A simple and tiny window and OpenGl handler intended for Demoscene development
 //
 //
-//               A lot of this code is botched together from various bits of example code and stuff online, so don't expect quailty
-//
-//               Basically, if you see something you don't like in the code, boo-hoo. I'm lazy.
-//
 //
 
 #include <stdio.h>
