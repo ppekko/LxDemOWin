@@ -32,8 +32,12 @@
 //               A simple and tiny window and OpenGl handler intended for Demoscene development
 //
 //
+//              Insert the line
+//                  #define LXDEMOWIN_IMPLEMENTATION
+//              before including this header in *one* C++ file to create the implementation.
 //
 
+#ifdef LXDEMOWIN_IMPLEMENTATION
 #include <stdio.h>
 
 #include <stdlib.h>
@@ -368,3 +372,4 @@ static int LXDOW_exitCallback(LXDOW_Window *window){
   }
   return 0;
 }
+#endif

@@ -1,3 +1,4 @@
+#define LXDEMOWIN_IMPLEMENTATION
 #include "../include/LxDemOWin.h"
 #define WinWidth 640
 #define WinHeight 480
