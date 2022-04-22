@@ -1,7 +1,7 @@
 #pragma once
 //  MIT License
 //
-//  Copyright (c) 2022 PipeWarp
+//  Copyright (c) 2022 pipewarp
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,8 @@
 //
 //
 //
-//               LxDemOWin                                      github.com/PipeWarp/LxDemOWin
-//               Linux Demo OpenGL and Window Manager           By PipeWarp (copy paste engineer)
+//               LxDemOWin                                      github.com/pipewarp/LxDemOWin
+//               Linux Demo OpenGL and Window Manager           By pipewarp
 //
 //
 //               A simple and tiny window and OpenGl handler intended for Demoscene development
