@@ -89,7 +89,7 @@ typedef struct LXDOW_Display
 
 typedef struct LXDOW_Timer
 {
-  float time;
+  volatile float time;
   pthread_t tithread;
 } LXDOW_Timer;
 
