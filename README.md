@@ -37,6 +37,6 @@ lazy + i want things centered
 i made this in 2 hours and i dont plan examining 2 lines for 10 hours to make one improvment. this was made so that i could quickly hop onto making another project. I will occasionally update this with new features here and there.
 
 ### Why another window manager? We already have GLFW/SDL ect.
-~~not small enough (see [SmallGlitter's](https://github.com/PipeWarp/Small-Glitter) size for reference)~~
+~~not small enough (see [SmallGlitter's](https://github.com/kb-x/Small-Glitter) size for reference)~~
 **this is around one hundred bytes smaller than SDL**
 
