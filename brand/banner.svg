@@ -27,9 +27,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.35355339"
-     inkscape:cx="1084.7018"
-     inkscape:cy="332.34019"
+     inkscape:zoom="0.5"
+     inkscape:cx="115"
+     inkscape:cy="967"
      inkscape:window-width="1920"
      inkscape:window-height="1007"
      inkscape:window-x="1920"
@@ -143,9 +143,9 @@
        inkscape:export-ydpi="180.00133"><tspan
          x="427.66211"
          y="252.78622"
-         id="tspan10984"><tspan
+         id="tspan950"><tspan
            style="font-family:'PF Arma Five';-inkscape-font-specification:'PF Arma Five'"
-           id="tspan10982">LXDEMOWIN</tspan></tspan></text>
+           id="tspan948">LXDEMOWIN</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-103.15227,188.62532)"
@@ -156,21 +156,21 @@
        inkscape:export-ydpi="180.00133"><tspan
          x="427.66211"
          y="164.11932"
-         id="tspan10988"><tspan
+         id="tspan954"><tspan
            style="font-family:'PF Arma Five';-inkscape-font-specification:'PF Arma Five'"
-           id="tspan10986">LXDE
+           id="tspan952">LXDE
 </tspan></tspan><tspan
          x="427.66211"
          y="271.90786"
-         id="tspan10992"><tspan
+         id="tspan958"><tspan
            style="font-family:'PF Arma Five';-inkscape-font-specification:'PF Arma Five'"
-           id="tspan10990">MO
+           id="tspan956">MO
 </tspan></tspan><tspan
          x="427.66211"
          y="379.69641"
-         id="tspan10996"><tspan
+         id="tspan962"><tspan
            style="font-family:'PF Arma Five';-inkscape-font-specification:'PF Arma Five'"
-           id="tspan10994">WIN</tspan></tspan></text>
+           id="tspan960">WIN</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-93.152265,31.658143)"
@@ -181,9 +181,9 @@
        inkscape:export-ydpi="180.00133"><tspan
          x="427.66211"
          y="132.05895"
-         id="tspan11000"><tspan
+         id="tspan966"><tspan
            style="font-family:'PF Arma Five';-inkscape-font-specification:'PF Arma Five';fill:#ffffff"
-           id="tspan10998">Linux Demo OpenGL and Window Manager</tspan></tspan></text>
+           id="tspan964">Linux Demo OpenGL and Window Manager</tspan></tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-93.152265,55.642737)"
@@ -194,14 +194,14 @@
        inkscape:export-ydpi="180.00133"><tspan
          x="427.66211"
          y="132.05895"
-         id="tspan11002">a small header-only Window and opengl manager </tspan><tspan
+         id="tspan968">a small header-only Window and opengl manager </tspan><tspan
          x="427.66211"
          y="212.05895"
-         id="tspan11004">for linux, written in C.
+         id="tspan970">for linux, written in C.
 </tspan><tspan
          x="427.66211"
          y="292.05895"
-         id="tspan11006">By kbx </tspan></text>
+         id="tspan972">By kbx </tspan></text>
     <rect
        style="fill:none;fill-opacity:0;stroke:#ffffff;stroke-width:3.70416;stroke-linecap:round;paint-order:markers fill stroke"
        id="rect846-8"
