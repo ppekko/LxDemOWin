@@ -14,7 +14,7 @@
 # The : is required for some old versions of csh.
 # On Ultrix, /bin/sh is too buggy, change the first line to: #!/bin/sh5
 
-# modified veeeery slightly by pipewarp
+# modified veeeery slightly by kbx
 
 x=`basename $0`
 if test $# = 0; then
