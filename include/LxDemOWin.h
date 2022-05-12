@@ -144,6 +144,7 @@ static void LXDOW_TimerUpdate(void *a)
 
 static void LXDOW_StartTimer(LXDOW_Timer *timer, float sleepTime)
 {
+  timer->time = 0.;
   LXDOW_Timer_THREADFORMAT *thread = (LXDOW_Timer_THREADFORMAT *)malloc(sizeof(LXDOW_Timer_THREADFORMAT));
   thread->sleepTime = sleepTime;
   thread->timer = timer;
