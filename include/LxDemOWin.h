@@ -1,7 +1,7 @@
 #pragma once
 //  MIT License
 //
-//  Copyright (c) 2022 kbx
+//  Copyright (c) 2022 pipe
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,8 @@
 //
 //
 //
-//               LxDemOWin                                      github.com/kb-x/LxDemOWin
-//               Linux Demo OpenGL and Window Manager           By kbx
+//               LxDemOWin                                      github.com/ppekko/LxDemOWin
+//               Linux Demo OpenGL and Window Manager           By pipe
 //
 //
 //               A simple and tiny window and OpenGl handler intended for Demoscene development
@@ -34,7 +34,7 @@
 //
 //              Insert the line
 //                  #define LXDEMOWIN_IMPLEMENTATION
-//              before including this header in *one* C++ file to create the implementation.
+//              before including this header in *one* C/++ file to create the implementation.
 //
 
 #ifdef LXDEMOWIN_IMPLEMENTATION
